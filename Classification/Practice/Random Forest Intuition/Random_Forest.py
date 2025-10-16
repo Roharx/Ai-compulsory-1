@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix, accuracy_score
 
 dataset = pd.read_csv('Social_Network_Ads.csv')
@@ -15,7 +15,13 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
-classifier = LogisticRegression(random_state=0)
+classifier = RandomForestClassifier(
+    random_state=0,
+    n_estimators=500,
+    max_depth=40,
+    criterion='entropy'
+)
+
 classifier.fit(X_train, y_train)
 
 # print(classifier.predict(sc.transform(X_test))

@@ -49,16 +49,13 @@ X_train, X_test, y_train, y_test = train_test_split(
 # 3) Random Forest + fast GridSearch
 # --------------------------------------------------------------------
 rf = RandomForestClassifier(random_state=RANDOM_STATE, n_jobs=-1)
-# n_jobs=-1: use all CPU cores to train faster
-
-# Small grid for fast test: 2×2 = 4 combos, cv=2 → 8 fits total
 param_grid = {
     "n_estimators": [250, 500],
     "max_depth": [20, 40],
     "max_features": ["sqrt"],
 }
 # n_estimators: number of forests, the input amount is the number of trees
-# max_depth: [None, 20] compares the none and 20 together, then picks the more accurate one
+# max_depth: [20, 40] compares the 20 and 40 together, then picks the more accurate one
 # max_features: ["sqrt"]: tells GridSearchCV to test forests where each tree node considers about 28 (√784) randomly
 # chosen pixel features when deciding its split.
 
