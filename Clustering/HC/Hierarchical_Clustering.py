@@ -12,7 +12,7 @@ X = dataset.iloc[:, [3, 4]].values # Just 2 columns for visualization, normally 
 # plt.xlabel('Customers')
 # plt.ylabel('Euclidean distances')
 # plt.show()
-# Dendogram result for optimal number of clusters: 5
+# Dendrogram result for optimal number of clusters: 5
 
 hc = AgglomerativeClustering(n_clusters=5, metric='euclidean', linkage='ward')
 y_hc = hc.fit_predict(X)
