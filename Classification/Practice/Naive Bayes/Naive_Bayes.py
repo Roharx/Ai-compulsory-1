@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
+from sklearn.naive_bayes import GaussianNB
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
-from sklearn.svm import SVC
 from sklearn.metrics import confusion_matrix, accuracy_score
 
 dataset = pd.read_csv('Social_Network_Ads.csv')
@@ -15,7 +15,7 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
-classifier = SVC(kernel='linear', random_state=0)
+classifier = GaussianNB()
 classifier.fit(X_train, y_train)
 
 # print(classifier.predict(sc.transform(X_test))
