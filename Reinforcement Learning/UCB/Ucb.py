@@ -5,7 +5,7 @@ import math
 
 dataset = pd.read_csv('Ads_CTR_Optimisation.csv')
 
-N = 550 # number of rows
+N = 550 # number of rows (fine-tuned to have the least rows to determine the best ad)
 d = 10 # number of columns
 ads_selected = []
 numbers_of_selections = [0] * d # Ni(n)
@@ -16,6 +16,9 @@ for n in range(0, N):
     ad = 0
     max_upper_bound = 0
     for i in range(0, d):
+        # if it has been selected, calculate the formula & if the upper bound is larger than the max, max will be
+        # the upper bound, otherwise (if it has not been selected),
+        # max for this round will be 1e400 (a very large number) and we will not use the upper_bound for this ad
         if numbers_of_selections[i] > 0:
             average_reward = sums_of_rewards[i] / numbers_of_selections[i]
             delta_i = math.sqrt((3/2) * (math.log(n+1) / numbers_of_selections[i]))
