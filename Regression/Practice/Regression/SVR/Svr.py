@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVR
 
-# dataset = pd.read_csv('Position_Salaries.csv')
-dataset = pd.read_csv('../Data.csv')
+dataset = pd.read_csv('Position_Salaries.csv')
+# dataset = pd.read_csv('../Data.csv')
 X = dataset.iloc[:, 1:-1].values
 y = dataset.iloc[:, -1].values
 
