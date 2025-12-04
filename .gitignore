@@ -1,3 +1,6 @@
 .venv/
 External Libraries
 Scratches and Consoles
+training_set/
+test_set/
+single_prediction/
